@@ -1,0 +1,11 @@
+.board{
+    position: static;
+    border-radius: 15px;
+    width: 100%;
+    background: white;
+    overflow: visible;
+}
+.sketch{
+    height: 100%;
+    width: 100%;
+}
