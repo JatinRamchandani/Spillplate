@@ -1,6 +1,7 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const path = require('path')
 
 io.on('connection', (socket)=>{
     console.log('User-Online')
@@ -12,7 +13,9 @@ io.on('connection', (socket)=>{
 
 if(process.env.NODE_ENV == "production"){
     app.use(express.static("spillplate/build"))
-      
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, 'spillplate/build', 'index.html'));
+      });
 }
 
 var server_port = process.env.YOUR_PORT|| process.env.PORT|| 8080;
